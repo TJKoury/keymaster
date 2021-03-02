@@ -7,8 +7,10 @@
 
 extern "C"
 {
+#ifdef __EMSCRIPTEN__
    EMSCRIPTEN_KEEPALIVE
-   const char *hello()
+#endif
+   char *hello()
    {
       return "Hello World!";
    }
