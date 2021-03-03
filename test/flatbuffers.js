@@ -7,6 +7,7 @@ describe("create a flatbuffer", function () {
 
   beforeEach(async function () {});
   it("does the flatbuffer", async function () {
+    globalThis.getFolder = () => console.log("folder");
     let fb = await flatbuffers({ arguments: ["--version"] });
   });
 });
