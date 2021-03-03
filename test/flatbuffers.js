@@ -9,9 +9,6 @@ describe("create a flatbuffer", function () {
   it("does the flatbuffer", async function () {
     let fb = await flatbuffers();
     console.log(fb);
-    const api = {
-      message: fb.cwrap("hello", "string", []),
-    };
-    console.log("asdf", api.message());
+ 
   });
 });
