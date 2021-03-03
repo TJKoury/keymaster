@@ -8,10 +8,10 @@ emmake cmake .  -DFLATBUFFERS_NO_ABSOLUTE_PATH_RESOLUTION=ON \
                 -DFLATBUFFERS_BUILD_LEGACY=OFF \
                 -DFLATBUFFERS_BUILD_SHAREDLIB=OFF \
                 -DCMAKE_CXX_EXTENSIONS=OFF \
-                -DBUILD_SHARED_LIBS=OFF \
+                -DBUILD_SHARED_LIBS=ON \
                 -DCMAKE_CXX_FLAGS="-I./include -fPIC -std=c++11 -O3 -s SINGLE_FILE -s EXPORT_ES6=1 -s LINKABLE=1 -s EXPORT_ALL=1 -v -g -Qunused-arguments -fno-exceptions"
 
-emmake make -j 4
+emmake make
 
 #emcc -s SINGLE_FILE -s EXPORT_ES6=1 -s  LLD_REPORT_UNDEFINED -I./include ./src/flatc_main.cpp -o flatbuffers.mjs
 mkdir -p ../../lib/flatbuffers

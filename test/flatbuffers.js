@@ -1,5 +1,5 @@
 import assert from "assert";
-import flatbuffers from "../src/flatbuffers/flatbuffers.mjs";
+import flatbuffers from "../lib/flatbuffers/flatbuffers.mjs";
 globalThis.__dirname = "/";
 
 describe("create a flatbuffer", function () {
