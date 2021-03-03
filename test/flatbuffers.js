@@ -7,8 +7,6 @@ describe("create a flatbuffer", function () {
 
   beforeEach(async function () {});
   it("does the flatbuffer", async function () {
-    console.log(flatbuffers.FS);
     let fb = await flatbuffers({ arguments: ["--version"] });
-    console.log(fb.FS);
   });
 });
