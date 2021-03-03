@@ -8,11 +8,13 @@ emmake cmake .  -DFLATBUFFERS_NO_ABSOLUTE_PATH_RESOLUTION=ON \
                 -DFLATBUFFERS_BUILD_LEGACY=OFF \
                 -DFLATBUFFERS_BUILD_SHAREDLIB=OFF \
                 -DCMAKE_CXX_EXTENSIONS=OFF \
-                -DCMAKE_CXX_FLAGS="-s RELOCATABLE=1 -v -g -Qunused-arguments -fno-exceptions"
+                -DBUILD_SHARED_LIBS=OFF \
+                -DCMAKE_CXX_FLAGS="-I./include -fPIC -std=c++11 -O3 -s SINGLE_FILE -s EXPORT_ES6=1 -s LINKABLE=1 -s EXPORT_ALL=1 -v -g -Qunused-arguments -fno-exceptions"
+
 emmake make -j 4
 
-emcc -s LLD_REPORT_UNDEFINED -s SINGLE_FILE -s EXPORT_ES6=1 -I./include ./src/flatc_main.cpp -o flatbuffers.js
+#emcc -s SINGLE_FILE -s EXPORT_ES6=1 -s  LLD_REPORT_UNDEFINED -I./include ./src/flatc_main.cpp -o flatbuffers.mjs
 mkdir -p ../../lib/flatbuffers
-cp flatbuffers.js ../../lib/flatbuffers
+cp flatc ../../lib/flatbuffers/flatbuffers.mjs
 #cp flatc.wasm ../../lib/flatbuffers/flatc.wasm
 #cp flathash.wasm ../../lib/flatbuffers/flathash.wasm

@@ -7,8 +7,8 @@ describe("create a flatbuffer", function () {
 
   beforeEach(async function () {});
   it("does the flatbuffer", async function () {
-    let fb = await (await flatbuffers()).ready;
-    console.log(fb.asm.hello())
+    let fb = await await flatbuffers();
+    console.log(fb);
     const api = {
       message: fb.cwrap("hello", "string", []),
     };
