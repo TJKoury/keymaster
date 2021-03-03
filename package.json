@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha -s 300 --require test/utilities/hooks.js",
-    "test:dev": "mocha -s 300 -w --parallel --require test/utilities/hooks.js ./test ./src",
+    "test:dev": "nodemon -w test --exec npm run test",
     "build:wasm:sql.js": "rm -rf ./node_modules/sql.js && mkdir -p node_modules/sql.js && cd node_modules/sql.js && git clone git@github.com:sql-js/sql.js.git . && cp ../../scripts/sqlite/Makefile.txt . && npm run build && mkdir -p ../../lib/sqlite && cp ./dist/*.js ../../lib/sqlite",
     "build:wasm:flatbuffers": "rm -rf ./node_modules/flatbuffers && mkdir -p node_modules/flatbuffers && cd node_modules/flatbuffers && git clone git@github.com:google/flatbuffers.git . && cd ../../scripts/flatbuffers && chmod +x ./build.sh && bash build.sh",
     "build:wasm:flatbuffers2": "cd src/flatbuffers/ && rm -rf build && mkdir -p build && cd build &&emmake cmake .. -DFLATBUFFERS_NO_ABSOLUTE_PATH_RESOLUTION=ON -DFLATBUFFERS_BUILD_LEGACY=OFF -DFLATBUFFERS_BUILD_SHAREDLIB=OFF -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_CXX_FLAGS=\"--no-entry -s SINGLE_FILE -s EXPORT_ES6=1 -s EXPORT_ALL=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"cwrap\"]' -s RELOCATABLE=1 -v -g -Qunused-arguments -fno-exceptions\" && emmake make && mv flatbuffer_wrapper ../flatbuffers.mjs"
@@ -42,7 +42,7 @@
     "jsdoc-to-markdown": "^7.0.0",
     "mocha": "^8.3.0",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.7",
     "ripemd160": "^2.0.2",
     "rollup": "^2.39.0",
     "rollup-plugin-terser": "^7.0.2",
